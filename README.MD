@@ -22,8 +22,8 @@ cd aczg-automation
 # Execução de cada script:
 
 1. Clonar o repositório
-2. Execute chmod 755 install.sh
-3. Executar `./install.sh`
+2. Execute `chmod 755 install.sh`
+3. Execute `./install.sh`
 4. Usar os comandos conforme necessário
 
 ## Funcionalidades
