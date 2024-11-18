@@ -12,21 +12,21 @@ cd aczg-automation
 
 ## Comandos Disponíveis
 
-criar-projeto <caminho> <nome>: Inicializa novo projeto
-aczginit <nome-entrega>: Cria nova branch de feature
-aczgfinish: Finaliza feature atual
-ver-logs: Mostra logs do pipeline
+- criar-projeto <caminho> <nome>: Inicializa novo projeto com git
+- aczginit <nome-entrega>: Cria nova branch no formato feat-nome-entrega
+- aczgfinish: Finaliza feature atual (merge na master e delete da branch)
+- aczg-logs: Mostra todos os logs do pipeline
+- aczg-logs-live: Mostra logs do pipeline em tempo real
+- ver-logs: Mostra logs filtrados do pipeline
 
-## Pipeline CI
-
-Testes automáticos a cada 4 horas
-Commits automáticos diários
-
-## Para usar, basta:
+# Execução de cada script:
 
 1. Clonar o repositório
-2. Executar `./install.sh`
-3. Usar os comandos conforme necessário
+2. Execute chmod 755 install.sh
+3. Executar `./install.sh`
+4. Usar os comandos conforme necessário
+
+## Funcionalidades
 
 Os scripts incluem:
 
@@ -77,7 +77,7 @@ chmod +x ci_pipeline.sh # Permissão de execução, recomendado 557
 
 Mas como é o formato do cron?
 
----
+```tree
 
 │ │ │ │ │
 │ │ │ │ └─── dia da semana (0-7)
@@ -85,6 +85,8 @@ Mas como é o formato do cron?
 │ │ └─────── dia do mês (1-31)
 │ └───────── hora (0-23)
 └─────────── minuto (0-59)
+
+```
 
 Portanto, temos como exemplo:
 
@@ -100,6 +102,11 @@ Para ver os logs:
 tail -f /var/logs/aczg_pipeline.log
 ```
 
+O padrão do script é:
+
+- Testes automáticos a cada 4 horas
+- Commits automáticos diários
+
 ## Script: install.sh
 
 ```bash
@@ -107,4 +114,4 @@ chmod +x install.sh # Permissão de execução, recomendado 755
 ./install.sh # Executar script
 ```
 
-O script instala os comandos `criar-projeto`, `aczginit`, `aczgfinish` e `ver-logs` no sistema. Ele ta preparado pra lidar com bash e o zsh. Ele prepara o ambiente para a execução dos scripts anteriormente apresentados.
+O script está preparado pra lidar com bash e o zsh. Ele prepara o ambiente para a execução dos scripts e alias anteriormente apresentados.
